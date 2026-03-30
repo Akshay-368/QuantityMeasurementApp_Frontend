@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quantity Measurement | Home</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body class="app-body">
+  <header class="topbar">
+    <div>
+      <p class="eyebrow">QuantityMeasurement App</p>
+      <h1>Operations Dashboard</h1>
+    </div>
+    <div class="topbar-actions">
+      <button id="logoutBtn" class="btn">Logout</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="card operation-card">
+      <h2>Quantity Operations</h2>
+      <p class="help-text">Choose category, operator, and units from dropdowns only.</p>
+
+      <form id="operationForm" class="grid-form">
+        <label>
+          Category
+          <select id="category" required></select>
+        </label>
+
+        <label>
+          Operator
+          <select id="operator" required></select>
+        </label>
+
+        <label>
+          Value 1
+          <input id="value1" type="number" step="any" required>
+        </label>
+
+        <label>
+          Unit 1
+          <select id="unit1" required></select>
+        </label>
+
+        <label id="value2Wrap">
+          Value 2
+          <input id="value2" type="number" step="any">
+        </label>
+
+        <label id="unit2Wrap">
+          Unit 2
+          <select id="unit2"></select>
+        </label>
+
+        <label id="targetUnitWrap">
+          Target Unit
+          <select id="targetUnit"></select>
+        </label>
+
+        <label id="scalarWrap">
+          Scalar
+          <input id="scalar" type="number" step="any">
+        </label>
+
+        <button type="submit" class="btn btn-primary full">Run Operation</button>
+      </form>
+
+      <article class="result-box" id="resultBox" aria-live="polite">
+        <h3>Result</h3>
+        <p id="resultText">No operation executed yet.</p>
+      </article>
+    </section>
+
+    <section class="card history-card">
+      <div class="history-head">
+        <h2>Operation History</h2>
+        <div class="history-actions">
+          <button id="refreshHistoryBtn" class="btn">Refresh</button>
+          <button id="clearHistoryBtn" class="btn btn-danger">Clear</button>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>When (UTC)</th>
+              <th>Operation</th>
+              <th>Input</th>
+              <th>Output</th>
+            </tr>
+          </thead>
+          <tbody id="historyTableBody"></tbody>
+        </table>
+      </div>
+      <p id="historyMessage" class="status" role="status" aria-live="polite"></p>
+    </section>
+  </main>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>

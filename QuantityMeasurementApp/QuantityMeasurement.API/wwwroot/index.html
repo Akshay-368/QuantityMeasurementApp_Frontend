@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quantity Measurement | Login</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body class="auth-body">
+  <main class="auth-shell">
+    <section class="brand-panel">
+      <p class="eyebrow">QuantityMeasurement App</p>
+      <h1>Measure. Convert. Operate.</h1>
+      <p class="intro">
+        Secure access to length, volume, weight, and temperature operations with strict dropdown-based inputs to prevent unit mistakes.
+      </p>
+      <ul class="feature-list">
+        <li>JWT authentication</li>
+        <li>Category-specific units</li>
+        <li>Operation history tracking</li>
+      </ul>
+    </section>
+
+    <section class="card auth-card">
+      <h2>Sign In</h2>
+      <form id="loginForm" class="stack">
+        <label>
+          Username
+          <input id="loginUsername" name="username" type="text" required maxlength="50" autocomplete="username">
+        </label>
+        <label>
+          Password
+          <input id="loginPassword" name="password" type="password" required maxlength="100" autocomplete="current-password">
+        </label>
+        <button type="submit" class="btn btn-primary">Login</button>
+      </form>
+
+      <div class="divider" aria-hidden="true"></div>
+
+      <h3>Create Account</h3>
+      <form id="registerForm" class="stack">
+        <label>
+          Username
+          <input id="registerUsername" name="username" type="text" required maxlength="50" autocomplete="username">
+        </label>
+        <label>
+          Password
+          <input id="registerPassword" name="password" type="password" required maxlength="100" autocomplete="new-password">
+        </label>
+        <button type="submit" class="btn">Register</button>
+      </form>
+
+      <p id="authMessage" class="status" role="status" aria-live="polite"></p>
+    </section>
+  </main>
+
+  <script src="assets/auth.js"></script>
+</body>
+</html>

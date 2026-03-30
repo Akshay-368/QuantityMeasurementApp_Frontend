@@ -1,0 +1,41 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\aksha\\OneDrive\\Documents\\QuantityMeasurementApp\\QuantityMeasurement.API\\wwwroot\\assets\\app.js",
+      "PackagePath": "staticwebassets\\assets\\app.js"
+    },
+    {
+      "Id": "C:\\Users\\aksha\\OneDrive\\Documents\\QuantityMeasurementApp\\QuantityMeasurement.API\\wwwroot\\assets\\auth.js",
+      "PackagePath": "staticwebassets\\assets\\auth.js"
+    },
+    {
+      "Id": "C:\\Users\\aksha\\OneDrive\\Documents\\QuantityMeasurementApp\\QuantityMeasurement.API\\wwwroot\\assets\\styles.css",
+      "PackagePath": "staticwebassets\\assets\\styles.css"
+    },
+    {
+      "Id": "C:\\Users\\aksha\\OneDrive\\Documents\\QuantityMeasurementApp\\QuantityMeasurement.API\\wwwroot\\home.html",
+      "PackagePath": "staticwebassets\\home.html"
+    },
+    {
+      "Id": "C:\\Users\\aksha\\OneDrive\\Documents\\QuantityMeasurementApp\\QuantityMeasurement.API\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.QuantityMeasurement.API.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.QuantityMeasurement.API.props",
+      "PackagePath": "build\\QuantityMeasurement.API.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.QuantityMeasurement.API.props",
+      "PackagePath": "buildMultiTargeting\\QuantityMeasurement.API.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.QuantityMeasurement.API.props",
+      "PackagePath": "buildTransitive\\QuantityMeasurement.API.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
