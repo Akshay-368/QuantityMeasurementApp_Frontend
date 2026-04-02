@@ -1,0 +1,17 @@
+# Backend Dockerfile for Render
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+WORKDIR /src
+
+# Copy full monorepo because API references sibling projects.
+COPY . .
+
+RUN dotnet restore QuantityMeasurementApp.sln
+RUN dotnet publish QuantityMeasurement.API/QuantityMeasurement.API.csproj -c Release -o /app/publish
+
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
+WORKDIR /app
+COPY --from=build /app/publish .
+
+# Render provides PORT at runtime.
+ENV ASPNETCORE_ENVIRONMENT=Production
+ENTRYPOINT ["dotnet", "QuantityMeasurement.API.dll"]

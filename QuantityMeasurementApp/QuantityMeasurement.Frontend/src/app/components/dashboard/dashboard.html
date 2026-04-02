@@ -1,0 +1,119 @@
+<header class="topbar">
+  <div>
+    <p class="eyebrow">Quantity Measurement App</p>
+    <h1>Home</h1>
+  </div>
+
+  <div>
+    <p class="help-text">Signed in as {{ selectedUser }}</p>
+    <button class="btn" type="button" (click)="logout()">Logout</button>
+  </div>
+</header>
+
+<main class="layout">
+  <section class="operation-card card">
+    <h2>Quantity Operations</h2>
+    <p class="help-text">
+      Select category first to load valid units, then choose operation and submit numeric values only.
+    </p>
+
+    <form class="grid-form" (ngSubmit)="runOperation()">
+      <label>
+        Category
+        <select [(ngModel)]="category" name="category" (ngModelChange)="onCategoryChange()">
+          <option *ngFor="let c of categories" [value]="c">{{ c }}</option>
+        </select>
+      </label>
+
+      <label>
+        Operation
+        <select [(ngModel)]="operator" name="operator" (ngModelChange)="onOperatorChange()">
+          <option *ngFor="let op of operators" [value]="op">{{ op }}</option>
+        </select>
+      </label>
+
+      <label>
+        Value 1 (Number)
+        <input type="number" step="any" [(ngModel)]="value1" name="value1" required />
+      </label>
+
+      <label>
+        Unit 1
+        <select [(ngModel)]="unit1" name="unit1">
+          <option *ngFor="let unit of units" [value]="unit.value">{{ unit.label }}</option>
+        </select>
+      </label>
+
+      <label *ngIf="operator === 'Add' || operator === 'Subtract' || operator === 'DivideByQuantity'">
+        Value 2 (Number)
+        <input type="number" step="any" [(ngModel)]="value2" name="value2" required />
+      </label>
+
+      <label *ngIf="operator === 'Add' || operator === 'Subtract' || operator === 'DivideByQuantity'">
+        Unit 2
+        <select [(ngModel)]="unit2" name="unit2">
+          <option *ngFor="let unit of units" [value]="unit.value">{{ unit.label }}</option>
+        </select>
+      </label>
+
+      <label *ngIf="operator === 'Convert' || operator === 'Add' || operator === 'Subtract'">
+        Target Unit
+        <select [(ngModel)]="targetUnit" name="targetUnit">
+          <option *ngFor="let unit of units" [value]="unit.value">{{ unit.label }}</option>
+        </select>
+      </label>
+
+      <label *ngIf="operator === 'DivideByScalar'">
+        Scalar (Number)
+        <input type="number" step="any" [(ngModel)]="scalar" name="scalar" required />
+      </label>
+
+      <div class="full">
+        <button class="btn btn-primary" type="submit" [disabled]="isCalculating">
+          {{ isCalculating ? 'Calculating...' : 'Run Operation' }}
+        </button>
+      </div>
+    </form>
+
+    <div class="result-box">
+      <h3>Result</h3>
+      <p>{{ result || 'No operation executed yet.' }}</p>
+    </div>
+
+    <p class="status">{{ message }}</p>
+  </section>
+
+  <section class="history-card card">
+    <div class="history-head">
+      <h2>History</h2>
+      <div class="history-actions">
+        <button class="btn" type="button" (click)="loadHistory()">Show History</button>
+        <button class="btn btn-danger" type="button" (click)="clearHistory()">Clear History</button>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Time</th>
+            <th>Operation</th>
+            <th>Input</th>
+            <th>Output</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngIf="history.length === 0">
+            <td colspan="4">No history yet.</td>
+          </tr>
+          <tr *ngFor="let row of history">
+            <td>{{ row.createdAt | date: 'medium' }}</td>
+            <td>{{ row.operation }}</td>
+            <td>{{ formatInput(row) }}</td>
+            <td>{{ row.result }} {{ row.resultUnit }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</main>

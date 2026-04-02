@@ -1,0 +1,20 @@
+# Frontend (Angular SSR) Dockerfile for Render
+FROM node:20-bookworm-slim AS build
+WORKDIR /app
+
+COPY QuantityMeasurement.Frontend/package*.json ./
+RUN npm ci
+
+COPY QuantityMeasurement.Frontend/ ./
+RUN npm run build
+
+FROM node:20-bookworm-slim AS runtime
+WORKDIR /app
+ENV NODE_ENV=production
+
+COPY --from=build /app/package*.json ./
+RUN npm ci --omit=dev
+COPY --from=build /app/dist ./dist
+
+# Render provides PORT at runtime and server.ts already reads it.
+CMD ["node", "dist/QuantityMeasurement.Frontend/server/server.mjs"]
